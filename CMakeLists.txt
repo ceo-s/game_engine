@@ -7,8 +7,8 @@ message("[x] Building with c++${CMAKE_CXX_STANDARD} standard")
 
 
 project(${PROJECT_NAME} LANGUAGES CXX)
+add_subdirectory(engine engine/bin)
 
 add_executable(${PROJECT_NAME} app/src/main.cpp)
-
-add_subdirectory(engine engine/bin)
 target_link_libraries(${PROJECT_NAME} ENGINE)
+
