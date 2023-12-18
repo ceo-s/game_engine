@@ -1,5 +1,7 @@
 #include "src/pch/pch.h"
 #include "application.h"
+#include "input.h"
+#include "glm/glm.hpp"
 
 #define BIND_FUNC(x) std::bind_front(&Application::x, this)
 
@@ -37,6 +39,9 @@ void Application::run() {
   while (running) {
     glClearColor(0.2, 0.3, 1., 1.);
     glClear(GL_COLOR_BUFFER_BIT);
+    auto [x, y] = Input::getMousePosition();
+
+    CORE_DEBUG("MousePos<{0}, {1}>", x, y);
     for (auto layer: layerStack) {
       layer->onUpdate();
     }

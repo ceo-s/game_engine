@@ -25,8 +25,14 @@ add_library(${PROJECT_NAME} SHARED
         src/layers/layers.h
         src/layers/imguiLayer.cpp
         src/layers/imguiLayer.h
-        src/input.cpp
         src/input.h
+        platform/linux/input.cpp
+        platform/linux/input.h
+        platform/linux/input.h
+        platform/linux/input.cpp
+        platform/linux/input.cpp
+        platform/linux/input.cpp
+        src/keyCodes.h
 )
 
 
@@ -40,12 +46,14 @@ target_precompile_headers(${PROJECT_NAME} PUBLIC src/pch/pch.cpp)
 add_subdirectory(external/glfw)
 target_link_libraries(${PROJECT_NAME} glfw)
 
-
 add_subdirectory(external/glad)
 target_link_libraries(${PROJECT_NAME} glad)
 
 add_subdirectory(external/imgui)
 target_link_libraries(${PROJECT_NAME} imgui)
+
+add_subdirectory(external/glm)
+target_link_libraries(${PROJECT_NAME} glm)
 
 target_include_directories(${PROJECT_NAME} PUBLIC external/spdlog/include)
 target_include_directories(${PROJECT_NAME} PUBLIC .)
